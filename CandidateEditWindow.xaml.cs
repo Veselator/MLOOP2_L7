@@ -50,24 +50,46 @@ namespace MLOOP2_L7
             recommendationsCheck.IsChecked = existingCandidate.HasRecommendations;
         }
 
-        private void SetLanguageCombo(ComboBox combo, string level)
+        private void SetLanguageCombo(ComboBox combo, LevelOfLanguage level)
         {
-            if (string.IsNullOrEmpty(level))
-            {
-                combo.SelectedIndex = 0;
-                return;
-            }
+            string levelString = level.ToString();
 
             for (int i = 0; i < combo.Items.Count; i++)
             {
                 ComboBoxItem item = (ComboBoxItem)combo.Items[i];
-                if (item.Content.ToString() == level)
+                if (item.Tag != null && item.Tag.ToString() == levelString)
                 {
                     combo.SelectedIndex = i;
                     return;
                 }
             }
             combo.SelectedIndex = 0;
+        }
+
+        private LevelOfLanguage GetLanguageLevel(ComboBox combo)
+        {
+            if (combo.SelectedItem == null)
+            {
+                return LevelOfLanguage.zero;
+            }
+
+            ComboBoxItem item = (ComboBoxItem)combo.SelectedItem;
+            if (item.Tag == null)
+            {
+                return LevelOfLanguage.zero;
+            }
+
+            string tag = item.Tag.ToString();
+
+            if (tag == "zero") return LevelOfLanguage.zero;
+            if (tag == "A1") return LevelOfLanguage.A1;
+            if (tag == "A2") return LevelOfLanguage.A2;
+            if (tag == "B1") return LevelOfLanguage.B1;
+            if (tag == "B2") return LevelOfLanguage.B2;
+            if (tag == "C1") return LevelOfLanguage.C1;
+            if (tag == "C2") return LevelOfLanguage.C2;
+
+            return LevelOfLanguage.zero;
         }
 
         private string GetComboValue(ComboBox combo)
@@ -90,9 +112,9 @@ namespace MLOOP2_L7
             candidate.FullName = fullNameBox.Text.Trim();
             candidate.BirthDate = birthDatePicker.SelectedDate.Value;
             candidate.Education = GetComboValue(educationCombo);
-            candidate.EnglishLevel = GetComboValue(englishCombo);
-            candidate.GermanLevel = GetComboValue(germanCombo);
-            candidate.FrenchLevel = GetComboValue(frenchCombo);
+            candidate.EnglishLevel = GetLanguageLevel(englishCombo);
+            candidate.GermanLevel = GetLanguageLevel(germanCombo);
+            candidate.FrenchLevel = GetLanguageLevel(frenchCombo);
             candidate.WorkExperience = int.Parse(experienceBox.Text);
             candidate.HasComputerSkills = computerSkillsCheck.IsChecked == true;
             candidate.HasRecommendations = recommendationsCheck.IsChecked == true;

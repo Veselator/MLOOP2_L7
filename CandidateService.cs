@@ -6,6 +6,8 @@ namespace MLOOP2_L7
 {
     public class CandidateService
     {
+        // Клас сервісу кандидата
+
         private static readonly string FilePath = "candidates.borys";
         private List<Candidate> candidates;
 
@@ -96,15 +98,15 @@ namespace MLOOP2_L7
                 {
                     if (language == "Англійська")
                     {
-                        return c.EnglishLevel != "Не володію" && !string.IsNullOrEmpty(c.EnglishLevel);
+                        return c.EnglishLevel != LevelOfLanguage.zero;
                     }
                     if (language == "Німецька")
                     {
-                        return c.GermanLevel != "Не володію" && !string.IsNullOrEmpty(c.GermanLevel);
+                        return c.GermanLevel != LevelOfLanguage.zero;
                     }
                     if (language == "Французька")
                     {
-                        return c.FrenchLevel != "Не володію" && !string.IsNullOrEmpty(c.FrenchLevel);
+                        return c.FrenchLevel != LevelOfLanguage.zero;
                     }
                     return true;
                 });

@@ -68,7 +68,7 @@
 
                 <Border Background="White" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="15" Margin="0,0,0,15">
                     <StackPanel>
-                        <TextBlock Text="Знання іноземних мов" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                        <TextBlock Text="Знання іноземних мов (рівень)" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,10"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -79,68 +79,85 @@
                             <StackPanel Grid.Column="0" Margin="0,0,10,0">
                                 <TextBlock Text="Англійська:" FontSize="12" Margin="0,0,0,3"/>
                                 <ComboBox x:Name="englishCombo" Style="{StaticResource ComboStyle}">
-                                    <ComboBoxItem Content="Не володію" IsSelected="True"/>
-                                    <ComboBoxItem Content="Володію вільно"/>
-                                    <ComboBoxItem Content="Читаю та перекладаю зі словником"/>
+                                    <ComboBoxItem Content="Не володію" Tag="zero" IsSelected="True"/>
+                                    <ComboBoxItem Content="A1 - Початковий" Tag="A1"/>
+                                    <ComboBoxItem Content="A2 - Елементарний" Tag="A2"/>
+                                    <ComboBoxItem Content="B1 - Середній" Tag="B1"/>
+                                    <ComboBoxItem Content="B2 - Вище середнього" Tag="B2"/>
+                                    <ComboBoxItem Content="C1 - Просунутий" Tag="C1"/>
+                                    <ComboBoxItem Content="C2 - Вільне володіння" Tag="C2"/>
                                 </ComboBox>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1">
                                 <TextBlock Text="Німецька:" FontSize="12" Margin="0,0,0,3"/>
                                 <ComboBox x:Name="germanCombo" Style="{StaticResource ComboStyle}">
-                                    <ComboBoxItem Content="Не володію" IsSelected="True"/>
-                                    <ComboBoxItem Content="Володію вільно"/>
-                                    <ComboBoxItem Content="Читаюта перекладаю зі словником"/>
+                                    <ComboBoxItem Content="Не володію" Tag="zero" IsSelected="True"/>
+                                    <ComboBoxItem Content="A1 - Початковий" Tag="A1"/>
+                                    <ComboBoxItem Content="A2 - Елементарний" Tag="A2"/>
+                                    <ComboBoxItem Content="B1 - Середній" Tag="B1"/>
+                                    <ComboBoxItem Content="B2 - Вище середнього" Tag="B2"/>
+                                    <ComboBoxItem Content="C1 - Просунутий" Tag="C1"/>
+                                    <ComboBoxItem Content="C2 - Вільне володіння" Tag="C2"/>
                                 </ComboBox>
                             </StackPanel>
                         </Grid>
+
                         <StackPanel Margin="0,10,0,0">
                             <TextBlock Text="Французька:" FontSize="12" Margin="0,0,0,3"/>
-                            <ComboBox x:Name="frenchCombo" Style="{StaticResource ComboStyle}" Width="200" HorizontalAlignment="Left">
-                                <ComboBoxItem Content="Не володію" IsSelected="True"/>
-                                <ComboBoxItem Content="Володію вільно"/>
-                                <ComboBoxItem Content="Читаю та перекладаю зі словником"/>
+                            <ComboBox x:Name="frenchCombo" Style="{StaticResource ComboStyle}" Width="220" HorizontalAlignment="Left">
+                                <ComboBoxItem Content="Не володію" Tag="zero" IsSelected="True"/>
+                                <ComboBoxItem Content="A1 - Початковий" Tag="A1"/>
+                                <ComboBoxItem Content="A2 - Елементарний" Tag="A2"/>
+                                <ComboBoxItem Content="B1 - Середній" Tag="B1"/>
+                                <ComboBoxItem Content="B2 - Вище середнього" Tag="B2"/>
+                                <ComboBoxItem Content="C1 - Просунутий" Tag="C1"/>
+                                <ComboBoxItem Content="C2 - Вільне володіння" Tag="C2"/>
                             </ComboBox>
                         </StackPanel>
                     </StackPanel>
                 </Border>
+
                 <TextBlock Text="Стаж роботи (років) *" Style="{StaticResource LabelStyle}"/>
                 <TextBox x:Name="experienceBox" Style="{StaticResource InputStyle}" Margin="0,0,0,15" Width="150" HorizontalAlignment="Left"/>
+
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                     <CheckBox x:Name="computerSkillsCheck" 
-                         Content="Володію комп'ютером" 
-                         FontSize="14"
-                         VerticalContentAlignment="Center"
-                         Margin="0,0,30,0"/>
+                             Content="Володію комп'ютером" 
+                             FontSize="14"
+                             VerticalContentAlignment="Center"
+                             Margin="0,0,30,0"/>
                     <CheckBox x:Name="recommendationsCheck" 
-                         Content="Наявність рекомендацій" 
-                         FontSize="14"
-                         VerticalContentAlignment="Center"/>
+                             Content="Наявність рекомендацій" 
+                             FontSize="14"
+                             VerticalContentAlignment="Center"/>
                 </StackPanel>
+
                 <TextBlock Text="* - обов'язкові поля" FontSize="11" Foreground="#999999" Margin="0,10,0,0"/>
             </StackPanel>
         </ScrollViewer>
+
         <Border Grid.Row="2" Background="#EEEEEE" Padding="20">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="✖ Скасувати"
-                    Width="120"
-                    Height="40"
-                    FontSize="14"
-                    Background="#9E9E9E"
-                    Foreground="White"
-                    BorderThickness="0"
-                    Cursor="Hand"
-                    Margin="0,0,10,0"
-                    Click="Cancel_Click"/>
+                        Width="120"
+                        Height="40"
+                        FontSize="14"
+                        Background="#9E9E9E"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Margin="0,0,10,0"
+                        Click="Cancel_Click"/>
                 <Button Content="✔ Зберегти"
-                    Width="120"
-                    Height="40"
-                    FontSize="14"
-                    Background="#4CAF50"
-                    Foreground="White"
-                    BorderThickness="0"
-                    Cursor="Hand"
-                    Click="Save_Click"/>
+                        Width="120"
+                        Height="40"
+                        FontSize="14"
+                        Background="#4CAF50"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="Save_Click"/>
             </StackPanel>
         </Border>
     </Grid>

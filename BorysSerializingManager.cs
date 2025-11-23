@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace MLOOP2_L7
 {
     public static class BorysSerializingManager
     {
+        // Універсальна серіалізація та десеріалізація
+
         private const string SEPARATOR = "|";
         private const string LINE_SEPARATOR = "\n";
         private const string NULL_VALUE = "~NULL~";
@@ -33,7 +36,7 @@ namespace MLOOP2_L7
                     foreach (var prop in properties)
                     {
                         object value = prop.GetValue(obj);
-                        string serializedValue = SerializeValue(value);
+                        string serializedValue = SerializeValue(value, prop.PropertyType);
                         values.Add(serializedValue);
                     }
 
@@ -105,14 +108,12 @@ namespace MLOOP2_L7
             }
         }
 
-        private static string SerializeValue(object value)
+        private static string SerializeValue(object value, Type type)
         {
             if (value == null)
             {
                 return NULL_VALUE;
             }
-
-            Type type = value.GetType();
 
             if (type == typeof(DateTime))
             {
@@ -123,6 +124,11 @@ namespace MLOOP2_L7
             if (type == typeof(bool))
             {
                 return value.ToString();
+            }
+
+            if (type.IsEnum)
+            {
+                return ((int)value).ToString();
             }
 
             string stringValue = value.ToString();
@@ -175,6 +181,16 @@ namespace MLOOP2_L7
                     return result;
                 }
                 return DateTime.MinValue;
+            }
+
+            if (targetType.IsEnum)
+            {
+                int intValue;
+                if (int.TryParse(value, out intValue))
+                {
+                    return Enum.ToObject(targetType, intValue);
+                }
+                return Enum.GetValues(targetType).GetValue(0);
             }
 
             return value;

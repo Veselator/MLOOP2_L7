@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace MLOOP2_L7
 {
@@ -24,23 +25,23 @@ namespace MLOOP2_L7
             if (candidate.HasComputerSkills)
             {
                 computerSkillsValue.Text = "Володію комп'ютером";
-                computerSkillsValue.Foreground = System.Windows.Media.Brushes.Green;
+                computerSkillsValue.Foreground = new SolidColorBrush(Colors.Green);
             }
             else
             {
                 computerSkillsValue.Text = "Не володію комп'ютером";
-                computerSkillsValue.Foreground = System.Windows.Media.Brushes.Gray;
+                computerSkillsValue.Foreground = new SolidColorBrush(Colors.Gray);
             }
 
             if (candidate.HasRecommendations)
             {
                 recommendationsValue.Text = "Є рекомендації";
-                recommendationsValue.Foreground = System.Windows.Media.Brushes.Green;
+                recommendationsValue.Foreground = new SolidColorBrush(Colors.Green);
             }
             else
             {
                 recommendationsValue.Text = "Немає рекомендацій";
-                recommendationsValue.Foreground = System.Windows.Media.Brushes.Gray;
+                recommendationsValue.Foreground = new SolidColorBrush(Colors.Gray);
             }
         }
 

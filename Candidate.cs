@@ -5,12 +5,14 @@ namespace MLOOP2_L7
 {
     public class Candidate
     {
+        // Клас для зберігання кандидату
+
         public string FullName { get; set; }
         public DateTime BirthDate { get; set; }
         public string Education { get; set; }
-        public string EnglishLevel { get; set; }
-        public string GermanLevel { get; set; }
-        public string FrenchLevel { get; set; }
+        public LevelOfLanguage EnglishLevel { get; set; }
+        public LevelOfLanguage GermanLevel { get; set; }
+        public LevelOfLanguage FrenchLevel { get; set; }
         public bool HasComputerSkills { get; set; }
         public int WorkExperience { get; set; }
         public bool HasRecommendations { get; set; }
@@ -35,27 +37,27 @@ namespace MLOOP2_L7
         {
             StringBuilder sb = new StringBuilder();
 
-            if (!string.IsNullOrEmpty(EnglishLevel) && EnglishLevel != "Не володію")
+            if (EnglishLevel != LevelOfLanguage.zero)
             {
-                sb.Append("Англійська: " + EnglishLevel);
+                sb.Append("Англійська: " + EnglishLevel.ToString());
             }
 
-            if (!string.IsNullOrEmpty(GermanLevel) && GermanLevel != "Не володію")
+            if (GermanLevel != LevelOfLanguage.zero)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append( ", ");
                 }
-                sb.Append("Німецька: " + GermanLevel);
+                sb.Append("Німецька: " + GermanLevel.ToString());
             }
 
-            if (!string.IsNullOrEmpty(FrenchLevel) && FrenchLevel != "Не володію")
+            if (FrenchLevel != LevelOfLanguage.zero)
             {
                 if (sb.Length != 0)
                 {
                     sb.Append(", ");
                 }
-                sb.Append("Французька: " + FrenchLevel);
+                sb.Append("Французька: " + FrenchLevel.ToString());
             }
 
             if (sb.Length == 0)
