@@ -1,0 +1,137 @@
+﻿<Window x:Class="MLOOP2_L7.CandidateViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Інформація про кандидата" Height="550" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="Margin" Value="0,0,0,3"/>
+        </Style>
+
+        <Style x:Key="FieldValueStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Padding="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#9C27B0" Offset="0"/>
+                    <GradientStop Color="#7B1FA2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel>
+                <TextBlock Text="👤 Інформація про кандидата"
+                          FontSize="22"
+                          FontWeight="Bold"
+                          Foreground="White"/>
+                <TextBlock x:Name="candidateNameHeader"
+                          FontSize="14"
+                          Foreground="#E1BEE7"
+                          Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+                <Border Background="White" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="20" Margin="0,0,0,15">
+                    <StackPanel>
+                        <TextBlock Text="📋 Основна інформація" FontSize="16" FontWeight="Bold" Foreground="#9C27B0" Margin="0,0,0,15"/>
+
+                        <TextBlock Text="П.І.Б." Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBlock x:Name="fullNameValue" Style="{StaticResource FieldValueStyle}"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Дата народження" Style="{StaticResource FieldLabelStyle}"/>
+                                <TextBlock x:Name="birthDateValue" Style="{StaticResource FieldValueStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Вік" Style="{StaticResource FieldLabelStyle}"/>
+                                <TextBlock x:Name="ageValue" Style="{StaticResource FieldValueStyle}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Освіта" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBlock x:Name="educationValue" Style="{StaticResource FieldValueStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="20" Margin="0,0,0,15">
+                    <StackPanel>
+                        <TextBlock Text="🌍 Знання мов" FontSize="16" FontWeight="Bold" Foreground="#9C27B0" Margin="0,0,0,15"/>
+                        <TextBlock x:Name="languagesValue" Style="{StaticResource FieldValueStyle}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="💼 Досвід та навички" FontSize="16" FontWeight="Bold" Foreground="#9C27B0" Margin="0,0,0,15"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Стаж роботи" Style="{StaticResource FieldLabelStyle}"/>
+                                <TextBlock x:Name="experienceValue" Style="{StaticResource FieldValueStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Дата подачі заявки" Style="{StaticResource FieldLabelStyle}"/>
+                                <TextBlock x:Name="applicationDateValue" Style="{StaticResource FieldValueStyle}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <TextBlock x:Name="computerSkillsIcon" Text="💻" FontSize="20" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="computerSkillsValue" FontSize="14" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock x:Name="recommendationsIcon" Text="📄" FontSize="20" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="recommendationsValue" FontSize="14" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="2" Background="#EEEEEE" Padding="20">
+            <Button Content="✖ Закрити"
+                    Width="120"
+                    Height="40"
+                    FontSize="14"
+                    Background="#9E9E9E"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    HorizontalAlignment="Right"
+                    Click="Close_Click"/>
+        </Border>
+    </Grid>
+</Window>
